@@ -37,6 +37,12 @@ io.on('connection',function(socket){
         monitorConn = true;
         console.log("Monitor Connected");
     });
+    socket.on("SendInfo",function(){
+        if(monitorConn)
+            socket.emit("Mon");
+        if(minecraftConn)
+            socket.emit("Mine");
+    });
     socket.on("MonitorDisconnected",function(){
         io.emit("MonOff");
         monitorConn = false;
